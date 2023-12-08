@@ -5,8 +5,8 @@ services:
     image: postgres:alpine
     environment:
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: bdio
-      POSTGRES_DB: bdio
+      POSTGRES_PASSWORD: root 
+      POSTGRES_DB: root  
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
@@ -20,7 +20,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/bdio
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=bdio
+      - SPRING_DATASOURCE_PASSWORD=root
 
   frontend:
     restart: always
