@@ -3,12 +3,10 @@ services:
   db:
     container_name: db
     image: postgres:alpine
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root 
-      POSTGRES_DB: root  
+      POSTGRES_DB: codersplace 
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
@@ -16,20 +14,20 @@ services:
   backend:
     restart: always
     container_name: backend
-    build: ./coders-space-backend
+    build: ./coders-place-backend
     ports:
       - "8080:8080"
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/bdio
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/codersplace
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root 
 
   frontend:
     restart: always
     container_name: frontend
-    build: coders-place-frontend
+    build: ./coders-place-frontend
     ports:
       - "80:80"
     depends_on:
