@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root 
-      POSTGRES_DB: root  
+      POSTGRES_DB: coderspace 
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/bdio
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/coderspace
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
 
